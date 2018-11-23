@@ -1,0 +1,3 @@
+# triangGraph
+
+Solution of a 
