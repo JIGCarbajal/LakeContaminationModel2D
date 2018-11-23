@@ -1,3 +1,22 @@
+%---------------------------------------------------------------------------------------------------------------------
+%   	Objetivo: Usar el algoritmo de busqueda binaria para encontrar todos los elementos "elem" dentro del arreglo 
+%		  ordenado "p", con cierto valor de tolerancia "tol" en el valor de "elem"
+%                
+%   	Datos entrada:                                                                                                                               
+%		p   - Matriz (2,np), coordenadas de los puntos de la malla
+%           	t   - Matriz (3,nt), matriz de conectividad de los puntos de la malla
+%           	u   - Matriz (2,np), matriz de las velocidades en "x" y "y" en cada nodo 
+%           	ti  - Escalar, instante de tiempo en el que se calculará la matriz de advección (indice de u(t))
+%
+%	Funciones externas:
+%			gradPhi()
+%
+%   	Datos salida:
+%           	D   - Matriz (np,np), matriz de adveccion del sistema en el instante "ti"
+% Fecha elaboracion: 3/Nov/2018
+% Ultima actualizacion: 16/Nov/2018
+%--------------------------------------------------------------------------------------------------------------------- 
+
 function [x] = binSrch(elem, tol, p)
 
         n = length(p);
