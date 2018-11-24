@@ -1,6 +1,6 @@
 %---------------------------------------------------------------------------------------------------------------------
 %   	Objetivo: Evaluar una solucion de un modelo de elementos finitos en un punto dentro de una malla (,no 
-%		  necesariamente un nodo,) de elementos finitos triangulares.
+%		  necesariamente un nodo,) de elementos finitos triangulares y graficar los contornos de esta.
 %                
 %   	Datos entrada:                                                                                                                               
 %           	delta	- Escalar, tamaño de celda de la malla rectangular
