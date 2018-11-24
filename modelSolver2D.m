@@ -70,15 +70,14 @@ function [uh] = modelSolver2D()
 %===============================================================================
 % Ciclo de calculo temporal para euler hacia atras
 %===============================================================================
-uh(:,1) = zeros(length(p),1); % condicion inicial de ceros
-uh(:,1) = exp(-((p(1,:)-p(1,1080)).^2 + (p(2,:)-p(2,1080)).^2 )./(2*100^2)); 
+	uh(:,1) = zeros(length(p),1); % condicion inicial de ceros
+	uh(:,1) = exp(-((p(1,:)-p(1,1080)).^2 + (p(2,:)-p(2,1080)).^2 )./(2*100^2)); 
 
-D = advectionAssembler2D(p,t,u,1); % Matriz de adveccion del sistema en cada instante (es constante aquí)
-R = inv(M + dt*(E*A+k*M+D)); % Calculo de la matriz invesa para solucion del sistema
-for i=2:size(Vqx,2)
-	b = loadAssembler2D(p,h(:,i),nod,f(dt*i)); % calculo del vector de carga en cada instante de tiempo
-	uh(:,i) = R*(M*uh(:,i-1)+dt*b);
-end
-
+	D = advectionAssembler2D(p,t,u,1); % Matriz de adveccion del sistema en cada instante (es constante aquí)
+	R = inv(M + dt*(E*A+k*M+D)); % Calculo de la matriz invesa para solucion del sistema
+	for i=2:size(Vqx,2)
+		b = loadAssembler2D(p,h(:,i),nod,f(dt*i)); % calculo del vector de carga en cada instante de tiempo
+		uh(:,i) = R*(M*uh(:,i-1)+dt*b); % Solucion de la 
+	end
 
 end
