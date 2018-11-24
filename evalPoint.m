@@ -1,3 +1,30 @@
+%---------------------------------------------------------------------------------------------------------------------
+%   	Objetivo: Evaluar una solucion de un modelo de elementos finitos en un punto dentro de una malla (,no 
+%		  necesariamente un nodo,) de elementos finitos triangulares.
+%                
+%   	Datos entrada:                                                                                                                               
+%           	point	- Vector (2), coordenadas (x,y) del punto a evaluar
+%           	p	- Matriz (2,Np), Matriz de coordenadas de los nodos de la malla
+%           	po	- Matriz (2,Np), Matriz de coordenadas de los nodos de la malla con las filas ordenadas
+%           	pind	- Matriz (2,Np), Matriz de indices originales ordenados de la matriz "p"
+%           	t	- Matriz (3,Np), Matriz de conectividad de los nodos de la malla
+%           	to	- Matriz (3,Np), Matriz de conectividad de los nodos de la malla con las filas ordenadas
+%           	tind	- Matriz (3,Np), Matriz de indices originales ordenados de la matriz "t"
+%		f   	- Vector (Np), Valor de la solucion en cada elemento de la malla
+%
+%	Funciones externas:
+%		binSrch()
+%		findNod()
+%		gradPhi()
+%
+%   	Datos salida:
+%           	val	- Escalar, Valor de la solucion en el punto "point"
+%		Kpol	- Escalar, Triangulo en el cual se encuentra el punto "point"
+%
+% Fecha elaboracion: 3/Nov/2018
+% Ultima actualizacion: 16/Nov/2018
+%---------------------------------------------------------------------------------------------------------------------
+
 function [val, Kpol] = evalPoint(point,p,po,pind,t,to,tind,f)
 
 	[y]=findNod(point,70,p,po,pind);
@@ -22,7 +49,7 @@ function [val, Kpol] = evalPoint(point,p,po,pind,t,to,tind,f)
     		hatphi = [alpha beta gamma]* [point(1); point(2); 1];
     		if (hatphi(1) <= 10^(-15) && hatphi(2) <= 10^(-15) && hatphi(3) <= 10^(-15)) % Chapuza aqui para evitar NaNs innecesarios
     			val = f(loc2glb)' * hatphi;  
-     		Kpol = K;
+     			Kpol = K;
         		return
     		else
         		val = NaN('single');
@@ -30,4 +57,4 @@ function [val, Kpol] = evalPoint(point,p,po,pind,t,to,tind,f)
     		end
 	end
 
-end
+endfunction
