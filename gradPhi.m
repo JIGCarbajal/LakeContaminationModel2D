@@ -10,8 +10,9 @@
 %           	y   - Vector (3), coordenadas en "y" de los tres nodos del triangulo
 %   Datos salida: 
 %          	area - Escalar, Area del triangulo formado
-%			alpha- Vector (3), constantes alpha de cada una de las funciones gorro en cada nodo
-%			beta - Vector (3), constantes beta de cada una de las funciones gorro en cada nodo
+%		alpha- Vector (3), constantes alpha de cada una de las funciones gorro en cada nodo
+%		beta - Vector (3), constantes beta de cada una de las funciones gorro en cada nodo
+%               beta - Vector (3), constantes gamma de cada una de las funciones gorro en cada nodo
 % Fecha elaboracion: 3/Nov/2018
 % Ultima actualizacion: 16/Nov/2018
 %---------------------------------------------------------------------------------------------------------------------   
@@ -23,6 +24,6 @@ function [area, alpha, beta, gamma] = gradPhi(x,y)
   
   alpha = [y(2)-y(3);y(3)-y(1);y(1)-y(2)]/(2*area); % valor de las constantes alpha en cada nodo
   beta  = [x(3)-x(2);x(1)-x(3);x(2)-x(1)]/(2*area);  % valor de las constantes beta en cada nodo
-  gamma = [x(2)*y(3)-x(3)*y(2);x(3)*y(1)-x(1)*y(3);x(1)*y(2)-x(2)*y(1) ]/(2*area); % alpha's i, j, k
+  gamma = [x(2)*y(3)-x(3)*y(2);x(3)*y(1)-x(1)*y(3);x(1)*y(2)-x(2)*y(1) ]/(2*area); % valor de las constantes gamma en cada nodo
   
 endfunction
